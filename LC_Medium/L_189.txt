@@ -1,0 +1,28 @@
+class Solution {
+    public void rotate(int[] arr, int k) {
+        k = k%arr.length;
+		int cnt = arr.length-1;
+		for(int i = 0;i<arr.length/2;i++) {
+			int temp = arr[i];
+			arr[i]=arr[cnt];
+			arr[cnt] = temp; 
+			cnt--;
+		}
+		int cnt2 = k-1;
+		for(int i=0;i<k/2;i++) {
+			int temp = arr[i];
+			arr[i]=arr[cnt2];
+			arr[cnt2] = temp; 
+			cnt2--;
+		}
+		int cnt3 = arr.length-1;
+		for(int i=k;i<(arr.length+k)/2;i++) {
+			int temp = arr[i];
+			arr[i]=arr[cnt3];
+			arr[cnt3] = temp; 
+			cnt3--;
+		}  
+        
+    }
+    
+}
