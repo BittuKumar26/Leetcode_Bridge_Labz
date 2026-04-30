@@ -1,0 +1,13 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min=prices[0]; // Take initial value that means arr[0] value
+        int ans=Integer.MIN_VALUE; // Considered max profit 
+        for(int i=0;i<prices.length;i++){
+            if(min>prices[i]){
+                min=prices[i];
+            }
+            ans=Math.max(ans,(prices[i]-min));
+        }
+        return ans;
+    }
+}
