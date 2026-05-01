@@ -1,0 +1,38 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        return sol(head);
+    }
+    public ListNode sol(ListNode head) {
+        if(head==null){
+            return null;
+        }
+        ListNode slow=head;
+        ListNode fast=head;
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                int cnt=getCnt(fast);
+                ListNode temp=head;
+                while(cnt-->0){
+                    temp=temp.next;
+                }
+                while(temp!=head){
+                    temp=temp.next;
+                    head=head.next;
+                }
+                return head;
+            }
+        }
+        return null;
+    }
+    public int getCnt(ListNode fast){
+        ListNode temp=fast.next;
+        int cnt=1;
+        while(temp!=fast){
+            cnt++;
+            temp=temp.next;
+        }
+        return cnt;
+    }
+}
